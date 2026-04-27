@@ -16,7 +16,7 @@ while True:
         # OPCION SALIDA DE MENU
         case 5:
             print("Gracias, vuelvas pronto")
-            print("Menu desarrollado por @GabrielKakazu")
+            print("Gestion de productos desarrollado por @GabrielKakazu")
             print("Talento Tech 2026 - Iniciación a Python")
             break
 
