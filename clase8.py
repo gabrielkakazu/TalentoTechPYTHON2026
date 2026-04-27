@@ -16,10 +16,13 @@ while True:
     precio = int(input("Ingrese precio de producto: "))
 
     while nombre == "":
-        nombre = input("[ALERTA] ¡El producto no puede tener un nombre vacío!")
+        print("[ALERTA] ¡El producto no puede tener un nombre vacío!")
+        nombre = input("Vuelva a ingresar nombre: ")
 
     while precio <= 0:
-        precio = int(input("[ALERTA] ¡El precio no puede ser 0 o negativo!"))
+        print("[ALERTA] ¡El precio no puede ser 0 o negativo!")
+        precio = int(input("Vuelva a ingresar precio :"))
+        
 
     productos.setdefault(nombre, precio)
     print(f"Este es el diccionario con {productos}")
