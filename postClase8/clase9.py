@@ -3,39 +3,64 @@ pantalla = "Sistema de Gestión Básica de Productos"
 print (pantalla)
 
 def menu():
+    separador()
     print(" 1. Ingresar productos\n 2. Mostrar productos\n 3. Buscar producto\n 4. Eliminar producto\n 5. Salir\n")
 
 def separador() :
     print("---")
 
-productos = []
+productos = {}
 
 def agregar_producto():
-    productoAIngresar = input("Ingrese nombre de producto: ").strip()
-    # precioAIngresar = int(input("Ingrese precio para el producto: "))
-    productos.append(productoAIngresar)
-    print(f"Producto {productoAIngresar} agregado con éxito\n")
+    while True:
+        nombre = input("Ingrese nombre de producto: ").strip()
+        precio = int(input("Ingrese un precio al producto: "))
+        # precioAIngresar = int(input("Ingrese precio para el producto: "))
+        if not nombre:
+            print("Lo siento, el nombre no puede ser vacío!")
+            break
+        elif precio.is_integer and precio > 0:
+            productos[nombre] = precio
+            print(f"Producto {nombre} agregado con éxito!\nSale ${precio}")
+            separador()
+            break
+        else: 
+            print("Lo siento, precio no puede ser menor a 0!")
+            break
     separador()
 
 def consultar_productos():
     if productos:
         print("Lista de productos")
-        for i, producto in enumerate(productos, start=1):
-            print(f"{i}. {producto}")
-        else:
-            print("Lista de productos vacía")
-        separador()
+        for i, nombre in enumerate(productos, start=1):
+            print(f"{i}. {nombre} sale ${productos[nombre]}")
+    else:
+        print("Lista de productos vacía")
+    separador()    
 
 def borrar_producto():
-    if productos:
+    while True:
+        productoABorrar = input("Ingrese nombre de producto a eliminar: ")
+        if productoABorrar.lower().strip() not in productos:
+            print("Lo siento, el producto no existe en nuestra BD")
+            break
+        else:
+            print(f"Eliminamos {productoABorrar} de nuestra BD")
+            del productos[productoABorrar]
+            break
+    separador()
+
+            
+
+    """if productos:
         productoABorrar = input("Ingrese nombre de producto a borrar: ")
         if productoABorrar in productos:
-            productos.remove(productoABorrar)
+            productos.pop(productoABorrar)
             print(f"Se eliminó {productoABorrar} de la lista.")
             separador()
         else:
             print(f"No se encuentra en la lista {productoABorrar}")
-            separador()
+            separador()"""
 
 def mostrar_menu():
     while True:
@@ -48,7 +73,7 @@ def mostrar_menu():
             case "2":
                 consultar_productos()
             case "3":
-                print("buscando producto") #TODO
+                print("buscando producto... función incompleta") #TODO
             case "4":
                 borrar_producto()
             case "5":
