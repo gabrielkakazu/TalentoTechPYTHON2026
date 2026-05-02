@@ -2,8 +2,69 @@
 pantalla = "Sistema de Gestión Básica de Productos"
 print (pantalla)
 
-productos = {}
+def menu():
+    print(" 1. Ingresar productos\n 2. Mostrar productos\n 3. Buscar producto\n 4. Eliminar producto\n 5. Salir\n")
 
+def separador() :
+    print("---")
+
+productos = []
+
+def agregar_producto():
+    productoAIngresar = input("Ingrese nombre de producto: ").strip()
+    # precioAIngresar = int(input("Ingrese precio para el producto: "))
+    productos.append(productoAIngresar)
+    print(f"Producto {productoAIngresar} agregado con éxito\n")
+    separador()
+
+def consultar_productos():
+    if productos:
+        print("Lista de productos")
+        for i, producto in enumerate(productos, start=1):
+            print(f"{i}. {producto}")
+        else:
+            print("Lista de productos vacía")
+        separador()
+
+def borrar_producto():
+    if productos:
+        productoABorrar = input("Ingrese nombre de producto a borrar: ")
+        if productoABorrar in productos:
+            productos.remove(productoABorrar)
+            print(f"Se eliminó {productoABorrar} de la lista.")
+            separador()
+        else:
+            print(f"No se encuentra en la lista {productoABorrar}")
+            separador()
+
+def mostrar_menu():
+    while True:
+        menu()
+        opcion = input("Ingresa una opcion (1-5): ")
+
+        match opcion.strip():
+            case "1":
+                agregar_producto()
+            case "2":
+                consultar_productos()
+            case "3":
+                print("buscando producto") #TODO
+            case "4":
+                borrar_producto()
+            case "5":
+                print("Gracias, vuelvas pronto")
+                print("Gestion de productos desarrollado por @GabrielKakazu")
+                print("Talento Tech 2026 - Iniciación a Python")
+                break
+            case _:
+                print("Lo siento, no ingresó una opción válida")
+
+mostrar_menu()
+        
+
+
+
+"""
 while True:
     
     menu = input(" 1. Ingresar productos\n 2. Mostrar productos\n 3. Buscar producto\n 4. Eliminar producto\n 5. Salir\nIngrese opción del 1 al 5 :")
@@ -89,3 +150,4 @@ while True:
                 if salir.lower().strip() == "s":
                     print("Volviendo a Menú Inicial")
                     break
+"""
