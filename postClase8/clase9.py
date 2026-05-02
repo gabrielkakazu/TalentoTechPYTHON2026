@@ -3,7 +3,6 @@ pantalla = "Sistema de Gestión Básica de Productos"
 print (pantalla)
 
 def menu():
-    separador()
     print(" 1. Ingresar productos\n 2. Mostrar productos\n 3. Buscar producto\n 4. Eliminar producto\n 5. Salir\n")
 
 def separador() :
