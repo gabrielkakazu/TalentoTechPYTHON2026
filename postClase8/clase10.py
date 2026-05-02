@@ -35,7 +35,7 @@ def agregar_producto():
         if not nombre or not precio or nombreFormateado in productos:
             print("Lo siento, precio y nombre no pueden ser vacíos!\nNi tampoco puede ser un nombre repetido")
             break
-        elif precio.is_integer and precio > 0:
+        elif isinstance(precio, int) and precio > 0:
             productos[nombreFormateado] = precio
             print(f"Producto {nombreFormateado} agregado con éxito!\nSale ${precio}")
             separador()

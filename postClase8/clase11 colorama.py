@@ -1,41 +1,85 @@
+import datetime as fecha
+
+
 # MENU DE OPCIONES
 pantalla = "Sistema de Gestión Básica de Productos"
 print (pantalla)
 
 def menu():
+    """ Muestra en pantalla las opciones del Sistema de Gestion:
+    1. Ingresar productos
+    2. Mostrar productos
+    3. Buscar productos
+    4. Eliminar productos
+    5. Salir
+    """
     print(" 1. Ingresar productos\n 2. Mostrar productos\n 3. Buscar producto\n 4. Eliminar producto\n 5. Salir\n")
 
 def separador() :
+    # Un separador para aplicar a cada interracción con el mení
     print("---")
 
 productos = {}
+fechasDeAgregado = []
+
 
 def agregar_producto():
+    """
+    Solicita por consola un nombre de producto (str) y un precio (int).
+    El bucle while se rompe:
+     - al ingresar un nombre vacío
+     - si precio es menor o igual a 0
+     - si el nombre y el precio son válidos,después de agregarlo al diccionario productos
+    """
     while True:
         nombre = input("Ingrese nombre de producto: ").strip()
-        precio = int(input("Ingrese un precio al producto: "))
+        precio = int(input("Ingrese un precio al producto (mayor a 0): "))
+        nombreFormateado = nombre.lower()
+        fechaDeImportación = fecha.date.today()
+
         # precioAIngresar = int(input("Ingrese precio para el producto: "))
-        if not nombre:
-            print("Lo siento, el nombre no puede ser vacío!")
+        if not nombre or not precio or nombreFormateado in productos:
+            print("Lo siento, precio y nombre no pueden ser vacíos!\nNi tampoco puede ser un nombre repetido")
             break
         elif isinstance(precio, int) and precio > 0:
-            productos[nombre] = precio
-            print(f"Producto {nombre} agregado con éxito!\nSale ${precio}")
+            productos[nombreFormateado] = precio
+            fechasDeAgregado.append(fechaDeImportación)
+            print(f"Producto {nombreFormateado} agregado con éxito!\nSale ${precio}")
             separador()
             break
         else: 
-            print("Lo siento, precio no puede ser menor a 0!")
+            print("Lo siento, precio no es válido!")
             break
     separador()
 
 def consultar_productos():
+    """ Imprime en pantalla los productos agregados y su precio.
+    """
     if productos:
-        print("Lista de productos")
+        print("Lista de productos:")
         for i, nombre in enumerate(productos, start=1):
-            print(f"{i}. {nombre} sale ${productos[nombre]}")
+            print(f"{i}. {nombre.capitalize()} sale ${productos[nombre]}")
+            
     else:
-        print("Lista de productos vacía")
+        print("Lista de productos vacía.")
     separador()    
+
+def buscar_producto():
+    """ Solicita el nombre de un producto, si está en la colección, imprime en pantalla el precio del producto.
+    Si no lo encuentra, dice que el producto no está disponible
+    """
+    while True:
+        productoBuscado = input("Ingrese nombre de producto: ").strip().lower()
+        if productoBuscado not in productos:
+            print("Lo siento, el producto no esta disponible... ")
+                    
+        else:
+            print(f"Aquí tenemos {productoBuscado} a un precio de ${productos.get(productoBuscado)}")
+                
+            salir = input("Presione 's' para volver a Menu Inicial ")
+            if salir.lower().strip() == "s":
+                print("Volviendo a Menú Inicial...")
+                break
 
 def borrar_producto():
     while True:
@@ -72,13 +116,14 @@ def mostrar_menu():
             case "2":
                 consultar_productos()
             case "3":
-                print("buscando producto... función incompleta") #TODO
+                buscar_producto()
             case "4":
                 borrar_producto()
             case "5":
                 print("Gracias, vuelvas pronto")
                 print("Gestion de productos desarrollado por @GabrielKakazu")
                 print("Talento Tech 2026 - Iniciación a Python")
+                print(fechasDeAgregado)
                 break
             case _:
                 print("Lo siento, no ingresó una opción válida")
