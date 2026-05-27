@@ -49,13 +49,76 @@ def consultar(nombre_db):
         id_, nombre, precio = producto
         print(f"{id_}. {nombre} - ${precio}")
 
+def actualizarNombre(nombre_db):
+    conexion = conectarBD(nombre_db)
+    cursor = conexion.cursor()
+
+    nuevoNombre = input("Ingrese nuevo nombre: ")
+
+    registroID = int(input("Ingrese ID de producto "))
+
+    cursor.execute(
+        "UPDATE productos SET nombre = ? WHERE id = ?", 
+        (nuevoNombre, registroID)
+    )
+
+    conexion.commit()
+    conexion.close()
+
+    print(f"Producto con ID {str(registroID)} actualizado a {nuevoNombre}.")
+
+def actualizarPrecio(nombre_db):
+    conexion = conectarBD(nombre_db)
+    cursor = conexion.cursor()
+
+    registroID = int(input("Ingrese ID de producto "))
+
+    nuevoPrecio = float(input("Ingrese nuevo precio: "))
+
+    cursor.execute(
+        "UPDATE productos SET precio = ? WHERE id = ?", 
+        (nuevoPrecio, registroID)
+    )
+
+    conexion.commit()
+    conexion.close()
+
+    print(f"Producto con ID {str(registroID)} actualizado a ${nuevoPrecio}.")
+
+def borrarRegistro(nombre_bd):
+    conexion = conectarBD(nombre_bd)
+    cursor = conexion.cursor()
+
+    id_a_borrar = int(input("Ingrese ID de producto a borrar "))
+
+    cursor.execute(
+        "DELETE FROM productos WHERE id = ?", 
+        (id_a_borrar,)
+    )
+
+    conexion.commit()
+    conexion.close()
+
+    print(f"Producto con ID {id_a_borrar} eliminado.")
+    print("La nueva lista es...")
+    consultar("productos")
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
     # conectarBD("productos")
     # crearTablaEnBD("productos")
-    insertarRegistros("productos")
+    # insertarRegistros("productos")
     consultar("productos")
+    # actualizarPrecio("productos")
+    borrarRegistro("productos")
+    
+
 
 
 
