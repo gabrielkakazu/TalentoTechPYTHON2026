@@ -21,10 +21,24 @@ def crearTablaEnBD(nombre_bd):
 
     print("Tabla creada correctamente.")
 
+def insertarRegistros(nombre_bd):
+        with sqlite3.connect(nombre_bd + ".db") as conexion:
+            cursor = conexion.cursor()
+
+            nombreAInsertar = input("Escriba nombre de producto: ")
+            precioAInsertar = float(input("Escriba precio: "))
+
+            cursor.execute("INSERT INTO productos (nombre, precio) VALUES (?, ?)", (nombreAInsertar, precioAInsertar))
+
+            conexion.commit()
+            conexion.close()
+
+            print("Producto agregados correctamente.")
 
 if __name__ == "__main__":
-    conectarBD("productos")
-    crearTablaEnBD("productos")
+    # conectarBD("productos")
+    # crearTablaEnBD("productos")
+    insertarRegistros("productos")
 
 
 
