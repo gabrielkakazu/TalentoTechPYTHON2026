@@ -98,6 +98,38 @@ Preguntas para Reflexionar:
 3. ¿Qué errores podrías prever al trabajar con bases de datos en programas reales y cómo creés que podrías evitarlos usando lo aprendido?
 4. ¿Cómo podrías aplicar el uso de bases de datos SQLite en un proyecto más complejo, como el Trabajo Final Integrador?
 
+
+## COLAB
+
+Desafío - Registro de notas con validación
+
+Vas crear un pequeño sistema para gestionar productos, pero esta vez usando una base de datos real con SQLite.
+
+🔧 ¿Qué tiene que hacer tu programa?
+
+    Mostrar un menú con 4 opciones:
+        Agregar un nuevo producto
+        Listar todos los productos
+        Cambiar el precio de un producto
+        Eliminar un producto
+
+    Usar input() para pedir los datos al usuario (nombre, precio, id, etc.)
+
+    Validar los valores ingresados (por ejemplo, que el precio sea un número válido)
+
+    Mostrar mensajes claros de éxito o error en cada operación
+
+💡 Algunas sugerencias:
+
+    Usá INSERT, SELECT, UPDATE y DELETE desde Python con sqlite3
+    Usá try-except si querés prevenir errores inesperados
+    Probá ejecutar varias operaciones seguidas y consultá al final para ver los resultados
+
+🎯 Este ejercicio resume todos los conceptos trabajados en esta clase. ¡A ponerlo en práctica!
+
+(Intenta resolverlo antes de mirar la posible solución que aparece más abajo!)
+
+
 ---
 
 ## CLASE 14
