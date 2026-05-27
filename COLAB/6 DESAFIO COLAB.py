@@ -31,7 +31,6 @@ def insertarRegistros(nombre_bd):
             cursor.execute("INSERT INTO productos (nombre, precio) VALUES (?, ?)", (nombreAInsertar, precioAInsertar))
 
             conexion.commit()
-            conexion.close()
 
             print("Producto agregados correctamente.")
 
