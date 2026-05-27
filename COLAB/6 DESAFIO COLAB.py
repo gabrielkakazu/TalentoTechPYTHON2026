@@ -33,7 +33,7 @@ def insertarRegistros(nombre_bd):
             conexion.commit()
             conexion.close()
 
-            print("Producto agregados correctamente.")
+            print("Producto agregado correctamente.")
 
 if __name__ == "__main__":
     # conectarBD("productos")
