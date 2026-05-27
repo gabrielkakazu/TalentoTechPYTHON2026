@@ -32,12 +32,30 @@ def insertarRegistros(nombre_bd):
 
             conexion.commit()
 
-            print("Producto agregados correctamente.")
+            print("Producto agregado correctamente.")
+
+def consultar(nombre_db):
+    conexion = conectarBD(nombre_db)
+    cursor = conexion.cursor()
+
+    cursor.execute("SELECT * FROM productos")
+    productos = cursor.fetchall()
+
+    conexion.close()
+
+    # Mostramos los resultados
+    print("Lista de productos:")
+    for producto in productos:
+        id_, nombre, precio = producto
+        print(f"{id_}. {nombre} - ${precio}")
+
+
 
 if __name__ == "__main__":
     # conectarBD("productos")
     # crearTablaEnBD("productos")
     insertarRegistros("productos")
+    consultar("productos")
 
 
 
