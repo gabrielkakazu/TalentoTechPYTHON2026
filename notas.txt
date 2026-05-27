@@ -1,0 +1,4 @@
+Nota obtenida: 1
+Nota obtenida: 10
+Nota obtenida: 9
+Nota obtenida: 5
