@@ -148,6 +148,11 @@ Preguntas para Reflexionar:
 3. El manejo de excepciones con try-except es clave para evitar errores inesperados. ¿Qué tipo de situaciones creés que podrían requerir un ROLLBACK dentro de un bloque except?
 4. Si tuvieras que optimizar un sistema CRUD para mejorar su seguridad y rendimiento, ¿qué técnicas o herramientas considerarías implementar más allá de lo aprendido en esta clase
 
+
+## COLAB
+
+
+
 ---
 
 ## CLASE 15

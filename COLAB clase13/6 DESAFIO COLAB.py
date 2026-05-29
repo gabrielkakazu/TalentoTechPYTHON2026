@@ -104,20 +104,22 @@ def borrarRegistro(nombre_bd):
     consultar("productos")
 
 
+def menu():
+    while True:
 
 
 
 
 
 
-if __name__ == "__main__":
-    # conectarBD("productos")
-    # crearTablaEnBD("productos")
-    # insertarRegistros("productos")
+
+"""if __name__ == "__main__":
+    conectarBD("productos")
+    crearTablaEnBD("productos")
+    insertarRegistros("productos")
     consultar("productos")
-    # actualizarPrecio("productos")
-    borrarRegistro("productos")
-    
+    actualizarPrecio("productos")
+    borrarRegistro("productos")""" 
 
 
 
