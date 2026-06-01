@@ -52,13 +52,25 @@ def borrarRegistro(id_borrar):
     print(f"Registro con id {id_borrar} borrado de la tabla")
 
 
+def consultarTabla():
+    conexion = sqlite3.connect("alumnos2.db")
+    cursor = conexion.cursor()
+    cursor.execute('SELECT * FROM parcial1')
+    parciales = cursor.fetchall()
+    for registro in parciales:
+        print(f"ID: {registro[0]}, Apellido: {registro[1]}, Nota de parcial: {registro[2]:.2f}")
+    conexion.close()
+
+alumnos = [("Adan", 10.0), ("Baccarini", 5.5), ("Diaz", 2.0), ("Elenchi", 7.75), ("Zorro", 8.80)]
 
 
 if __name__ == "__main__":
     # crearDB()
     # crearTabla()
-    # insertarRegistro(registro)
+    #for alumno in alumnos:
+    #    insertarRegistro(alumno)
     # modificarNota(recuperatorio, id_alumno)
     # borrarRegistro(id_alumno)
+    consultarTabla()
     pass
 
